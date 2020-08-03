@@ -42,6 +42,21 @@ public class Board {
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
+	
+			//REMOVER UMA PEÇA DE UMA DADA POSIÇÃO NO TABULEIRO
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)){
+			throw new BoardException("Position not on the board");	
+		}
+		if (piece (position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+	
 	public void placePiece(Piece piece, Position position) {
 		if(thereIsAPiece(position)) {		//PROGRAMAÇÃO DEFENSIVA
 			throw new BoardException("There is already a piece on position " + position);//PROGRAMAÇÃO DEFENSIVA
