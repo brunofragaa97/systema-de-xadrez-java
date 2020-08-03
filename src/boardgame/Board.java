@@ -14,7 +14,7 @@ public class Board {
 		pieces = new Piece[rows][columns];
 	}
 
-
+			//ENCAPSULAMENTO
 	public int getRows() {
 		return rows;
 	}
@@ -34,6 +34,16 @@ public class Board {
 		this.columns = columns;
 	}
 	
+	
+			//MÉTODOS
+	public Piece piece (int row, int column) {
+		return pieces[row][column];
+	}
+			//SOBRECARGA
+	public Piece piece (Position position) {
+		return pieces[position.getRow()][position.getColumn()];
+	}
+			
 	
 	
 	

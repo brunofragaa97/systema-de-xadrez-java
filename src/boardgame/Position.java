@@ -5,11 +5,13 @@ public class Position {
 	private int row;
 	private int column;
 	
+				//CONSTRUTOR
 	public Position(int row, int column){
 		this.row = row;
 		this.column = column;
 	}
 
+				//ENCAPSULAMENTO
 	public int getRow() {
 		return row;
 	}
@@ -26,6 +28,7 @@ public class Position {
 		this.column = column;
 	}
 	
+				//DESCRIÇÃO DA CLASSE
 	@Override
 	public String toString() {
 		return row + ", " + column;

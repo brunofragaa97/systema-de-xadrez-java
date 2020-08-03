@@ -1,13 +1,17 @@
 package application;
 
-import boardgame.Board;
+import chess.ChessMatch;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Hello world!");
+				//CRIA A PARTIDA DE TABULEIRO
+		ChessMatch chessMatch = new ChessMatch();
+				//USER INTERFACE
+		UI.printBoard(chessMatch.getPieces());
 
+		
 	}
 
 }

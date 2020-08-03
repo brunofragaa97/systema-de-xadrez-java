@@ -2,7 +2,7 @@ package boardgame;
 
 public class Piece {
 			
-			//UMA PEÇA TEM UMA POSIÇÃO E UMA TÁBUA
+			//UMA PEÇA TEM UMA POSIÇÃO E UM TABULEIRO
 	protected Position position;
 	private Board board;
 	
@@ -12,9 +12,10 @@ public class Piece {
 	position = null;
 	}
 		
-
-			/*APENAS USO DO 'GET', PARA NÃO PERMITIR QUE O TABULEIRO SEJA DENTRO DA PEÇA
-		  	SOMENTE CLASSES DENTRO DO MESMO PACOTE E SUBPASTAS PODERAO ACESSAR A  PEÇA*/
+						
+			/*								ENCAPSULAMENTO
+			APENAS USO DO 'GET', PARA NÃO PERMITIR QUE O TABULEIRO SEJA DENTRO DA PEÇA
+		  	SOMENTE CLASSES DENTRO DO MESMO PACOTE E SUBPASTAS PODERAO ACESSAR A  PEÇA */
 	protected Board getBoard() {
 		return board;
 	}
