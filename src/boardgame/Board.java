@@ -4,50 +4,67 @@ public class Board {
 	
 	private int rows;
 	private int columns;
-			//CRIA MATRIZ DE PEÇAS 
+			//CRIA UMAMATRIZ DE PEÇAS 
 	private Piece[][] pieces;
 	
 			//NÃO NECESSITA DE PEÇA NA INICIALIZAÇÃO, POR ISSO NÃO ESTÁ DENTRO DO CONSTRUTOR
 	public Board(int rows, int columns) {
+		if (rows < 1 || columns < 1) {
+			throw new BoardException("Error creating board: there must be at least 1 row and 1 column");
+		}
 		this.rows = rows;
 		this.columns = columns;
 		pieces = new Piece[rows][columns];
 	}
 
 			//ENCAPSULAMENTO
+			//NÃO É NECESSARIO QUE ACESSEM NEM AS COLUNAS E NEM AS LINHAS ATRAVEZ DO "SET"
 	public int getRows() {
 		return rows;
 	}
-
-
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-
-
 	public int getColumns() {
 		return columns;
 	}
 
-
-	public void setColumns(int columns) {
-		this.columns = columns;
-	}
-	
 	
 			//MÉTODOS
 	public Piece piece (int row, int column) {
+		if(!positionExists(row, column)) {	//PROGRAMAÇÃO DEFENSIVA
+			throw new BoardException("Position not on the board");//PROGRAMAÇÃO DEFENSIVA
+		}
 		return pieces[row][column];
 	}
 			//SOBRECARGA
 	public Piece piece (Position position) {
+		if(!positionExists(position)) {		//PROGRAMAÇÃO DEFENSIVA
+			throw new BoardException("Position not on the board");//PROGRAMAÇÃO DEFENSIVA
+		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
+	
 	public void placePiece(Piece piece, Position position) {
+		if(thereIsAPiece(position)) {		//PROGRAMAÇÃO DEFENSIVA
+			throw new BoardException("There is already a piece on position " + position);//PROGRAMAÇÃO DEFENSIVA
+		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
 	}
 	
+			//MÉTODO AUXILIAR
+	private boolean positionExists(int row, int column) {
+		return row >= 0 && row < rows && column >= 0 && column < columns; 
+		
+	}
+	public boolean positionExists(Position position) {
+		return positionExists(position.getRow(), position.getColumn());
+	}
+			//TESTA SE TEM ALGUMA PEÇA NESTA POSIÇÃO
+	public boolean thereIsAPiece(Position position) {
+		if(!positionExists(position)) {		//PROGRAMAÇÃO DEFENSIVA
+			throw new BoardException("Position not on the board");//PROGRAMAÇÃO DEFENSIVA
+		}
+		return piece(position) != null;
+	}
 	
 	
 }
