@@ -4,7 +4,7 @@ import boardgame.Board;
 import boardgame.Piece;
 
 		//AO UTILIZAR "HERANÇA", O COMPILADOR RECLAMA POIS EXIGE "CONSTRUTOR" DA CLASSE "PIECE"
-public class ChessPiece extends Piece {
+public abstract class ChessPiece extends Piece {
 	
 	private Color color;
 
